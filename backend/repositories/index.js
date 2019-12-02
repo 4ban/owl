@@ -27,6 +27,10 @@ class TasksRepository {
     return this.model.findByIdAndDelete(id)
   }
 
+  deleteList(list) {
+    return this.model.deleteMany({ list: list })
+  }
+
   deleteAll() {
     return this.model.deleteMany()
   }

@@ -60,7 +60,27 @@ router.delete('/delete/:id', (req, res) => {
   })
 })
 
+// Delete all documents for one list
+router.delete('/delete/list/:list', (req, res) => {
+  const { list } = req.params;
+  repository.deleteList(list).then((ok) => {
+    let result = {
+      error: false,
+      message: 'List deleted successfully'
+    }
+    res.status(200).json(result)
+  }).catch(error => {
+    console.log(error)
+    let err = {
+      error: true,
+      message: error
+    }
+    res.json(err)
+  })
+})
+
 // Delete all documents in the collection
+// UNUSED in the frontend
 router.delete('/delete', (req, res) => {
   repository.deleteAll().then((ok) => {
     let result = {
