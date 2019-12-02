@@ -36,7 +36,11 @@
     </b-row>
     <b-row align-h="center" >
       <b-col sm="12" md="8" lg="6" xl="6" align="end">
-        <b-button class="mt-3 w-25" @click="reset()" variant="danger">Reset</b-button>
+        <b-button id="delete-button" class="mt-3 w-25 mr-2" @click="deleteList()" variant="danger">Delete</b-button>
+        <b-button id="reset-button" class="mt-3 w-25" @click="reset()" variant="danger">Reset</b-button>
+
+        <b-tooltip target="delete-button" triggers="hover" variant="danger">Delete items in the list</b-tooltip>
+        <b-tooltip target="reset-button" triggers="hover" variant="danger">Reset the order of the items</b-tooltip>
       </b-col>
     </b-row>
   </div>
@@ -124,6 +128,15 @@ export default {
     reset () {
       this.$store.commit('resetState', this.list)
       this.getList()
+    },
+    deleteList () {
+      console.log(this.list)
+      this.$http.delete('/delete/list/' + this.list).then((result) => {
+        if (result.data.error === false) {
+          this.tasks = []
+          this.newList = true
+        }
+      })
     }
   }
 }

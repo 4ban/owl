@@ -11,6 +11,7 @@
         </b-col>
       </b-row>
     </b-form>
+    List of lists:
     <b-list-group class="list-group">
       <b-list-group-item v-for="list in lists" :key="list.id"  :href="list">{{ list }}</b-list-group-item>
     </b-list-group>
