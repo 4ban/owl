@@ -33,7 +33,8 @@ const store = new Vuex.Store({
       }
     },
     resetState: (state, list) => {
-      state.lists.splice(state.lists.indexOf(list), 1)
+      let oldList = state.lists.find(item => item.list === list)
+      state.lists.splice(state.lists.indexOf(oldList), 1)
       // Object.assign(state, initialState())
       // window.localStorage.removeItem('todo')
       // window.localStorage.clear()

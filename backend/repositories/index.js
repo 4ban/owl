@@ -20,7 +20,7 @@ class TasksRepository {
   }
 
   findAll(list) {
-    return this.model.find({ list: list })
+    return this.model.find({ list: list }).sort({ date: -1 })
   }
 
   deleteById(id) {
