@@ -47,7 +47,7 @@ describe('Test the NOT empty list', () => {
   test('It should response with NOT empty list', (done) => {
     request(app).get('/test_not_empty').then((response) => {
       let resp = JSON.parse(response.text)
-      let testable = resp.find(item => item._id === '5de432a522f4048e1b88408f').body
+      let testable = resp.find(item => item._id === '5de48258751587ad128f7b09').body
       expect(testable).toEqual('test item 2')
       done()
     })

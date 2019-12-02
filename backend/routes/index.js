@@ -78,4 +78,18 @@ router.delete('/delete', (req, res) => {
   })
 })
 
+// Get all tasks of list
+router.get('/lists/all', (req, res, next) => {
+  repository.findLists().then(tasks => {
+    res.json(tasks)
+  }).catch(error => {
+    console.log(error)
+    let err = {
+      error: true,
+      message: error
+    }
+    res.json(err)
+  })
+})
+
 module.exports = router

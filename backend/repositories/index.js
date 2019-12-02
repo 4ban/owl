@@ -30,6 +30,10 @@ class TasksRepository {
   deleteAll() {
     return this.model.deleteMany()
   }
+
+  findLists() {
+    return this.model.find().distinct('list')
+  }
 }
 
 module.exports = new TasksRepository(Tasks)
